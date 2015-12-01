@@ -2,6 +2,6 @@
   "compilerOptions": {
     "jsx": "react"
   },
-  // If this is not present all files are compiled (including node_modules) - leave as [] so that webpack chooses files
+  "__comment": "If this is not present all files are compiled (including node_modules) - leave as [] so that webpack chooses files",
   "files": []
 }
