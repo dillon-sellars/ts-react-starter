@@ -4,9 +4,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 //const __react = React;
 
-import Greeting from "./greeting";
+import CommentBox from "./commentBox";
 
 ReactDOM.render(
-  <Greeting name="bobby"/>,
-  document.body
+  <CommentBox url="/api/comments" pollInterval = {2000}/>,
+  document.getElementById('content')
 );

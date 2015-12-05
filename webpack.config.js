@@ -4,7 +4,8 @@ module.exports = {
 
   output: {
     filename: "app.js",
-    path: __dirname + "/dist"
+    path: __dirname + "/dist",
+    publicPath: "http://localhost:8080/assets"
   },
 
   resolve: {
