@@ -7,6 +7,6 @@ import * as ReactDOM from 'react-dom';
 import CommentBox from "./commentBox";
 
 ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval = {2000}/>,
+  <CommentBox url="/api/comments" pollInterval = {4000}/>,
   document.getElementById('content')
 );

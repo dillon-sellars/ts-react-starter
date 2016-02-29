@@ -1,18 +1,13 @@
 /// <reference path="../typings/tsd.d.ts" />
+/// <reference path="./interfaces.d.ts"/>
 
 import * as React from 'react';
 import * as $ from 'jquery';
 import CommentList from './commentList';
 import CommentForm from './commentForm';
-import DataItem from "./commentList";
 
-interface Props extends React.Props<any> {
-  url: string;
-  pollInterval: number;
-}
-
-class CommentBox extends React.Component<Props, any> {
-  constructor(props) {
+class CommentBox extends React.Component<ICommentBoxProps, IData> {
+  constructor(props : ICommentBoxProps) {
     super(props);
     this.state = {data: []}
   }
@@ -23,7 +18,7 @@ class CommentBox extends React.Component<Props, any> {
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success: (data) => {
+      success: (data:Array<IDataItem>) => {
         this.setState({data: data});
       },
       error: (xhr, status, err) => {
@@ -31,6 +26,26 @@ class CommentBox extends React.Component<Props, any> {
         console.error(this.props.url, status, err.toString());
       }
     })
+  }
+
+  handleCommentSubmit(comment:IDataItem) {
+    let comments = this.state.data;
+    comment.id = Date.now();
+    let newComments = comments.concat([comment]);
+    this.setState({data: newComments});
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: (data) => {
+        this.setState({data: data});
+      },
+      error: (xhr, status, err) => {
+        this.setState({data: comments});
+        console.error(this.props.url, status, err.toString());
+      }
+    });
   }
 
   componentDidMount() {
@@ -44,7 +59,7 @@ class CommentBox extends React.Component<Props, any> {
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentList data={this.state.data}/>
-        <CommentForm/>
+        <CommentForm onCommentSubmit={comment => this.handleCommentSubmit(comment)}/>
       </div>
     );
   }

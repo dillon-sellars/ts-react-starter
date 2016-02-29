@@ -1,20 +1,11 @@
 /// <reference path="../typings/tsd.d.ts" />
+/// <reference path="interfaces.d.ts" />
 
 import * as React from 'react';
 import Comment from './comment';
 
 
-interface DataItem {
-  id: number;
-  author: String;
-  text: String;
-}
-
-interface Props extends React.Props<any> {
-  data: DataItem[];
-}
-
-class CommentList extends React.Component<Props, any> {
+class CommentList extends React.Component<IData, any> {
   constructor(props) {
     super(props);
   }

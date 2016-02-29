@@ -3,12 +3,13 @@
 import * as React from 'react';
 import * as marked from 'react-marked';
 
-interface Props extends React.Props<any> {
-  author: String;
+interface Props extends React.Props<IDataItem> {
+  author: string;
+  key: number;
 }
 
-class Comment extends React.Component<any, any> {
-  constructor(props) {
+class Comment extends React.Component<Props, any> {
+  constructor(props:Props) {
     super(props);
   }
 
