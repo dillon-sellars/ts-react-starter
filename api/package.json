@@ -1,0 +1,30 @@
+{
+  "name": "starter-api",
+  "version": "0.0.1",
+  "description": "A REST API for learning koa.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "./node_modules/mocha/bin/mocha -u bdd -R spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "co-body": "^4.2.0",
+    "co-monk": "^1.0.0",
+    "koa": "^1.2.0",
+    "koa-body": "^1.4.0",
+    "koa-compress": "^1.0.9",
+    "koa-logger": "^1.3.0",
+    "koa-route": "^2.4.2",
+    "koa-static": "^2.0.0",
+    "mongoskin": "^2.1.0",
+    "monkii": "^1.2.0"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "mocha": "^2.5.3",
+    "should": "^9.0.2",
+    "supertest": "^1.2.0"
+  }
+}
